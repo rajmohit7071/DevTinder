@@ -1,0 +1,52 @@
+const {adminAuth} = require("./middlewares/auth");
+
+app.use("/admin" , adminAuth);
+
+app.get("/admin/getAllData", (req,res) =>{
+    res.send("data send");
+}) 
+
+app.get("/admin/deleteUser", (req,res) =>{
+    res.send("user deleted");
+}) 
+
+app.use("/test",(req,res)=>{
+    throw new Error("eooro");
+})
+
+app.get("/user/:userId" , (req,res) =>{
+   console.log(req.query) // for finding the data from url
+    console.log(req.params);  // dynamic routes
+    res.send({
+        firstName : "Mohit",
+        lastName : "Raj",
+        user: req.params.userId,
+        value: req.query,
+    })
+})
+
+app.post("/user" , (req,res) =>{
+    res.send("Data saved successfully")
+})
+
+app.delete("/user" , (req,res) =>{
+    res.send("Data deleted successfully")
+})
+
+
+app.get("/hello/2",(req,res)=>{
+    res.send("hello from server222.....");
+})
+
+app.get("/hello",(req,res)=>{
+    res.send("hello from server.....");
+})
+
+
+// this will handle all http methods
+app.use("/", (err,req,res,next) =>{
+    if(err){
+
+        res.status(500).send("Something went wrong");
+    }
+})
