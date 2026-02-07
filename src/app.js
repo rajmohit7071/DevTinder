@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 
 const User = require("./models/user");
@@ -6,6 +7,7 @@ const ConnectDB = require("./config/database");
 const cors = require("cors");
 
 const app = express();
+
 
 app.use(cors({
     origin: "http://localhost:5173",
