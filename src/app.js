@@ -7,6 +7,7 @@ const ConnectDB = require("./config/database");
 const cors = require("cors");
 
 const app = express();
+require("./utils/cronjob");
 
 
 app.use(cors({

@@ -37,6 +37,8 @@ const userSchema = mongoose.Schema({
     },
     age :{
         type : Number,
+        min : 0,
+        max : 100
     },
     photoUrl:{
         type : String,
